@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Preahvihear } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
+import WhatsappButton from "@/components/web/WhatsappButton";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const preahvihear = Preahvihear({
+  subsets: ["latin"],
+  weight: "400", // Preahvihear only has 400
+  variable: "--font-preahvihear",
 });
 
 export const metadata: Metadata = {
@@ -25,10 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${preahvihear.className} antialiased`}>
         {children}
+          <Toaster/>
+             <WhatsappButton 
+          phoneNumber="01614793657"
+          message="Hi, I want to chat with you!" 
+        />
       </body>
     </html>
   );
